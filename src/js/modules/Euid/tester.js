@@ -1,14 +1,15 @@
-(function tester(Euid) {
-  'use strict';
+import logger from "./logger.js";
+import utils from "./utils.js";
 
   // Euid 모듈 멤버 추출
-  var logger = Euid.logger;
-  var utils = Euid.utils;
+  // import 할 때 선언을 해줌
+  // var logger = logger;
+  // var utils = utils;
 
   /* -------------------------------------------------------------------------- */
 
   // 테스트 유틸리티
-  var test = function (title, callback) {
+  const test = (title, callback) => {
     console.group('TEST → ' + title);
     try {
       logger.log('테스트 결과:');
@@ -20,7 +21,7 @@
   };
 
   // 익스펙트 유틸리티
-  var expect = function (actual /* 결과 값 */) {
+  const expect = (actual /* 결과 값 */) => {
     return {
       toBe: function (expected /* 기대 값 */) {
         if (expected !== actual) {
@@ -41,8 +42,8 @@
     };
   };
 
-  Euid.tester = {
+  export default {
     test,
     expect,
   };
-})((window.Euid = window.Euid || {}));
+  
